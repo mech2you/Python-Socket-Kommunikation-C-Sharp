@@ -28,17 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Connect = new System.Windows.Forms.Button();
             this.Disconnect = new System.Windows.Forms.Button();
             this.Send = new System.Windows.Forms.Button();
             this.SendText = new System.Windows.Forms.TextBox();
             this.StatusGroup = new System.Windows.Forms.GroupBox();
-            this.Status = new System.Windows.Forms.TextBox();
             this.Ip = new System.Windows.Forms.TextBox();
             this.Port = new System.Windows.Forms.NumericUpDown();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.IpLable = new System.Windows.Forms.Label();
             this.PortLable = new System.Windows.Forms.Label();
+            this.Status = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.StatusGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Port)).BeginInit();
             this.SuspendLayout();
@@ -96,15 +98,6 @@
             this.StatusGroup.TabStop = false;
             this.StatusGroup.Text = "Status";
             // 
-            // Status
-            // 
-            this.Status.Location = new System.Drawing.Point(9, 46);
-            this.Status.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Status.Multiline = true;
-            this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(728, 149);
-            this.Status.TabIndex = 5;
-            // 
             // Ip
             // 
             this.Ip.Location = new System.Drawing.Point(11, 60);
@@ -155,6 +148,21 @@
             this.PortLable.TabIndex = 9;
             this.PortLable.Text = "Port";
             // 
+            // Status
+            // 
+            this.Status.Location = new System.Drawing.Point(9, 46);
+            this.Status.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Status.Multiline = true;
+            this.Status.Name = "Status";
+            this.Status.Size = new System.Drawing.Size(728, 149);
+            this.Status.TabIndex = 5;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // SocketPythonKommunikation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -187,12 +195,13 @@
         private System.Windows.Forms.Button Send;
         private System.Windows.Forms.TextBox SendText;
         private System.Windows.Forms.GroupBox StatusGroup;
-        private System.Windows.Forms.TextBox Status;
         private System.Windows.Forms.TextBox Ip;
         private System.Windows.Forms.NumericUpDown Port;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label IpLable;
         private System.Windows.Forms.Label PortLable;
+        private System.Windows.Forms.TextBox Status;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

@@ -38,10 +38,10 @@ namespace SocketCommunicationToPython
             {
                 SetTextToTextBox("IP oder Port enthalten einen Fehler -> " + Convert.ToString(Ip) + " Port " + port);
                 connected = false;
+                return connected;
             }
             try
             {
-
                 PcSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 PcSocket.SendTimeout = 0;
                 PcSocket.ReceiveTimeout = 0;
