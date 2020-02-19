@@ -29,7 +29,7 @@ namespace SocketCommunicationToPython
 
         private void Send_Click(object sender, EventArgs e)
         {
-
+            // Das ist ein test
         }
     }
 }
