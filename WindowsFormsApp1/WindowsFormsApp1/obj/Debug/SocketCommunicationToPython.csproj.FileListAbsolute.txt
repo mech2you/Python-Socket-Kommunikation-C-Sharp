@@ -1,0 +1,9 @@
+C:\Users\micro\Documents\test_repo\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\micro\Documents\test_repo\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\micro\Documents\test_repo\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\micro\Documents\test_repo\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\SocketCommunicationToPython.csprojAssemblyReference.cache
+C:\Users\micro\Documents\test_repo\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\SocketCommunicationToPython.SocketPythonKommunikation.resources
+C:\Users\micro\Documents\test_repo\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\micro\Documents\test_repo\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\SocketCommunicationToPython.csproj.GenerateResource.cache
+C:\Users\micro\Documents\test_repo\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\micro\Documents\test_repo\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

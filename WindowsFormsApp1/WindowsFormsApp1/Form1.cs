@@ -8,16 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace SocketCommunicationToPython
 {
-    public partial class Form1 : Form
+    public partial class SocketPythonKommunikation : Form
     {
-        public Form1()
+        public SocketPythonKommunikation()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Connect_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Disconnect_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Send_Click(object sender, EventArgs e)
         {
 
         }
