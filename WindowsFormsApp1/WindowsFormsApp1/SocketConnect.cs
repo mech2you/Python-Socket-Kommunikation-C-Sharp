@@ -73,13 +73,17 @@ namespace SocketCommunicationToPython
         {
             try
             {
-                PcSocket.Close();
-                SetTextToTextBox("Trennen erfolgreich zu" + Ip + " Port " + port);
+                PcSocket.Shutdown(SocketShutdown.Both);
             }
             catch
             {
                 SetTextToTextBox("Fehler beim Trennen mit " + Ip + " Port " + port);
 
+            }
+            finally
+            {
+                PcSocket.Close();
+                SetTextToTextBox("Trennen erfolgreich zu" + Ip + " Port " + port);
             }
             connected = false;
         }
