@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 #http://www.python-exemplarisch.ch/index_de.php?inhalt_links=navigation_de.inc.php&inhalt_mitte=raspi/de/communication.inc.php
 # DataServer1.py
 
@@ -31,6 +33,7 @@ class SocketHandler(Thread):
         while True:
             global isConnected
             cmd = ""
+            
             try:
                 debug("Calling blocking conn.recv()")
                 cmd = self.conn.recv(1024)
@@ -87,6 +90,8 @@ while True:
     socketHandler.start()
     t = 0
     while isConnected:
+        test=conn._closed
+        test=conn._real_close
         print ("Server connected at", t, "s")
         time.sleep(10)
         t += 10
