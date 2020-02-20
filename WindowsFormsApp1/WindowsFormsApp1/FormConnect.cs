@@ -37,6 +37,7 @@ namespace SocketCommunicationToPython
         private void Send_Click(object sender, EventArgs e)
         {
             SocketPython.Send(SendText.Text);
+
         }
     }
 }

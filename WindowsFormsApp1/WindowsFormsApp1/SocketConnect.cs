@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using System.Text;
-
+using System.ComponentModel;
 namespace SocketCommunicationToPython
 {
     class SocketConnect
@@ -13,6 +13,7 @@ namespace SocketCommunicationToPython
         private TextBox Statusbox;
         private IPAddress Ip = null;
         private int port = -1;
+        private BackgroundWorker DatenWorker;
         public SocketConnect(object _Statusbox = null)
         {
             if (_Statusbox != null)
@@ -20,7 +21,41 @@ namespace SocketCommunicationToPython
                 Statusbox = (TextBox)_Statusbox;
             }
             connected = false;
+            DatenWorker = new BackgroundWorker();
+            DatenWorker.DoWork += new DoWorkEventHandler(EventHandlerDatenWorker);
+            DatenWorker.WorkerReportsProgress = true;
+            DatenWorker.WorkerSupportsCancellation = true;
         }
+
+        private void EventHandlerDatenWorker(object sender, DoWorkEventArgs e)
+        {
+            string kommando = (string)e.Argument;
+            if (connected)
+            {
+                bool send = false;
+                try
+                {
+                    byte[] msg = Encoding.UTF8.GetBytes(kommando);
+                    PcSocket.Send(msg);
+                    send = true;
+                    SetTextToTextBox("Nachricht verschickt -> " + kommando);
+                }
+                catch
+                {
+                    SetTextToTextBox("Fehler beim Senden der Nachricht -> " + kommando);
+                }
+                if (send)
+                {
+                    SetTextToTextBox(" Nachricht -> " + Receive());
+                    e.Result = true;
+                }
+                else
+                {
+                    e.Result = false;
+                }
+            }
+        }
+
         #region Connect
         /// <summary>
         /// Verbindet sich zum Zielhost über eine Socket Verbindung.
@@ -93,23 +128,27 @@ namespace SocketCommunicationToPython
         /// Versenden einer Nachricht. String wird mit UFT8 an den Zielhost geschickt
         /// </summary>
         /// <param name="_message">String-> Sendet den String anden Zielhost</param>
-        public bool Send(string _message)
+        public void Send(string _message)
         {
-            bool send = false;
-            try
-            {
-                byte[] msg= Encoding.UTF8.GetBytes(_message);
-                PcSocket.Send(msg);
-                send = true;
-                SetTextToTextBox("Nachricht verschickt -> " + _message);
-            }
-            catch
-            {
-                SetTextToTextBox("Fehler beim Senden der Nachricht -> "+ _message);
-            }
-            return send;
+            DatenWorker.RunWorkerAsync(_message);
+            
         }
         #endregion
+
+        public string Receive()
+        {
+            byte[] bytes = new byte[1024];
+            try
+            {
+                PcSocket.Receive(bytes);
+            }
+            catch (SocketException e)
+            {
+                return (Convert.ToString(e.ErrorCode)+" "+ Convert.ToString(e.Message));
+            }
+            return Encoding.UTF8.GetString(bytes);
+        }
+
         #region Extrafunktionen 
         /// <summary>
         /// SetTextToTextBox Übergibt sicher den Text zum Hauptformular
