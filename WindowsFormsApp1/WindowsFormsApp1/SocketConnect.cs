@@ -8,12 +8,36 @@ namespace SocketCommunicationToPython
 {
     class SocketConnect
     {
+        /// <summary>
+        /// Socketverbinung zum Zielhost
+        /// </summary>
         Socket PcSocket;
-        private bool connected; //Verbinungsstatus
+        /// <summary>
+        /// Verbinungsstatus der Socket Verbinung
+        /// </summary>
+        private bool connected;
+        /// <summary>
+        /// Objekt einer Textbox um Nachrichten aus der Klasse an das Formular zu übertragen
+        /// </summary>
         private TextBox Statusbox;
+        /// <summary>
+        /// IP vom Zielhost
+        /// </summary>
         private IPAddress Ip = null;
-        private int port = -1;
-        private BackgroundWorker DatenWorker;
+        /// <summary>
+        /// Port vom Zielhost
+        /// </summary>
+        private int port = -1; // Port vom Zielhost
+        /// <summary>
+        /// Wird verwenden um Daten zu senden und diese zu empfangen
+        /// </summary>
+        private BackgroundWorker DatenWorker; 
+
+        #region SocketConnect Konstrukter
+        /// <summary>
+        /// Im Konstruktor wird der BackgroundWorker initialisiert. Dabei kann optional eine Textbox übergeben werden die im Fehlerfall die Nachrichten oder Statusmeldungen erhält.  
+        /// </summary>
+        /// <param name="_Statusbox">TextBox-> Objekt zur Textbox das Fehlernachrichten oder Statusmeldung erhält</param>
         public SocketConnect(object _Statusbox = null)
         {
             if (_Statusbox != null)
@@ -26,7 +50,11 @@ namespace SocketCommunicationToPython
             DatenWorker.WorkerReportsProgress = true;
             DatenWorker.WorkerSupportsCancellation = true;
         }
-
+        #endregion
+        #region EventHandlerDatenWorker
+        /// <summary>
+        /// Thread der mit den BackgroundWorker gelöst ist. Es werden Daten an den Zielhost übermittelt und auf eine Rückantwort gewartet. Im Fehlerfall gibt die Funktion e.Result false zurück.
+        /// </summary>
         private void EventHandlerDatenWorker(object sender, DoWorkEventArgs e)
         {
             string kommando = (string)e.Argument;
@@ -55,7 +83,7 @@ namespace SocketCommunicationToPython
                 }
             }
         }
-
+        #endregion
         #region Connect
         /// <summary>
         /// Verbindet sich zum Zielhost über eine Socket Verbindung.
@@ -134,7 +162,10 @@ namespace SocketCommunicationToPython
             
         }
         #endregion
-
+        #region Receive
+        /// <summary>
+        /// Empfängt eine Nachricht vom Zielhost. Im Fehlerfall wird der Fehler zurückgegeben
+        /// </summary>
         public string Receive()
         {
             byte[] bytes = new byte[1024];
@@ -148,7 +179,7 @@ namespace SocketCommunicationToPython
             }
             return Encoding.UTF8.GetString(bytes);
         }
-
+        #endregion
         #region Extrafunktionen 
         /// <summary>
         /// SetTextToTextBox Übergibt sicher den Text zum Hauptformular
