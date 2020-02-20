@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 #http://www.python-exemplarisch.ch/index_de.php?inhalt_links=navigation_de.inc.php&inhalt_mitte=raspi/de/communication.inc.php
 # DataServer1.py
 
@@ -7,7 +9,7 @@ import time
 import RPi.GPIO as GPIO
 import sys
 
-VERBOSE = False
+VERBOSE = True
 IP_PORT = 22000
 P_BUTTON = 24 # adapt to your wiring
 
@@ -31,18 +33,17 @@ class SocketHandler(Thread):
         while True:
             global isConnected
             cmd = ""
+            
             try:
                 debug("Calling blocking conn.recv()")
-                cmd = self.conn.recv(1024)
+                cmd = self.conn.recv(1024).decode()
                 cmd=str(cmd)
             except:
                 debug("exception in conn.recv()") 
                 # happens when connection is reset from the peer
                 break
-            print (cmd)
-            print (str(len(cmd)))
             debug("Received cmd: " + cmd + " len: " + str(len(cmd)))
-            if not isConnected:
+            if cmd == "":
                 break
             self.executeCommand(cmd)
         conn.close()
@@ -87,6 +88,8 @@ while True:
     socketHandler.start()
     t = 0
     while isConnected:
+        test=conn._closed
+        test=conn._real_close
         print ("Server connected at", t, "s")
         time.sleep(10)
         t += 10
