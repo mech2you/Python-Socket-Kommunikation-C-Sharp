@@ -9,7 +9,7 @@ import time
 import RPi.GPIO as GPIO
 import sys
 
-VERBOSE = False
+VERBOSE = True
 IP_PORT = 22000
 P_BUTTON = 24 # adapt to your wiring
 
@@ -36,16 +36,14 @@ class SocketHandler(Thread):
             
             try:
                 debug("Calling blocking conn.recv()")
-                cmd = self.conn.recv(1024)
+                cmd = self.conn.recv(1024).decode()
                 cmd=str(cmd)
             except:
                 debug("exception in conn.recv()") 
                 # happens when connection is reset from the peer
                 break
-            print (cmd)
-            print (str(len(cmd)))
             debug("Received cmd: " + cmd + " len: " + str(len(cmd)))
-            if not isConnected:
+            if cmd == "":
                 break
             self.executeCommand(cmd)
         conn.close()
