@@ -1,25 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #http://www.python-exemplarisch.ch/index_de.php?inhalt_links=navigation_de.inc.php&inhalt_mitte=raspi/de/communication.inc.php
-# DataServer1.py
-
 from threading import Thread
 import socket
 import time
 import RPi.GPIO as GPIO
 import sys
 
-VERBOSE = True
 IP_PORT = 22000
-P_BUTTON = 24 # adapt to your wiring
-
-def setup():
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(P_BUTTON, GPIO.IN, GPIO.PUD_UP)
-
-def debug(text):
-    if VERBOSE:
-        print ("Debug:---", text)
 
 # ---------------------- class SocketHandler ------------------------
 class SocketHandler(Thread):
@@ -28,68 +16,47 @@ class SocketHandler(Thread):
         self.conn = conn
         
     def run(self):
-        
-        debug("SocketHandler started")
         while True:
             global isConnected
             cmd = ""
-            
             try:
-                debug("Calling blocking conn.recv()")
                 cmd = self.conn.recv(1024).decode()
                 cmd=str(cmd)
             except:
-                debug("exception in conn.recv()") 
                 # happens when connection is reset from the peer
                 break
-            debug("Received cmd: " + cmd + " len: " + str(len(cmd)))
             if cmd == "":
                 break
             self.executeCommand(cmd)
         conn.close()
-        print ("Client disconnected. Waiting for next client...")
+        print ("Verbinung wurde getrennt")
         isConnected = False
-        debug("SocketHandler terminated")
 
     def executeCommand(self, cmd):
-        debug("Calling executeCommand() with  cmd: " + cmd)
-        if cmd[:-1] == "go":  # remove trailing "\0"
-            if GPIO.input(P_BUTTON) == GPIO.LOW:
-                state = "Button pressed"
-            else:
-                state = "Button released"
-            print ("Reporting current state:", state)
-            self.conn.sendall(state + "\0")
+        print ("Kommando: "+ cmd)
+        self.conn.sendall(bytes(cmd + "\n", "utf-8"))
 # ----------------- End of SocketHandler -----------------------
 
-setup()
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# close port when process exits:
 serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
-debug("Socket created")
 HOSTNAME = "" # Symbolic name meaning all available interfaces
 try:
     serverSocket.bind((HOSTNAME, IP_PORT))
 except socket.error as msg:
-    print ("Bind failed", msg[0], msg[1])
+    print ("Fehler Socket bind")
     sys.exit()
 serverSocket.listen(10)
 
-print ("Waiting for a connecting client...")
+print ("Warten auf eingehende Verbinung")
 isConnected = False
 while True:
-    debug("Calling blocking accept()...")
     conn, addr = serverSocket.accept()
-    print ("Connected with client at " + addr[0])
+    print ("Client verbunden ip-> " + addr[0])
     isConnected = True
     socketHandler = SocketHandler(conn)
-    # necessary to terminate it at program termination:
     socketHandler.setDaemon(True)  
     socketHandler.start()
-    t = 0
     while isConnected:
         test=conn._closed
         test=conn._real_close
-        print ("Server connected at", t, "s")
-        time.sleep(10)
-        t += 10
+        time.sleep(1)
