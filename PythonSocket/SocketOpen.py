@@ -41,7 +41,7 @@ serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
 HOSTNAME = "" # Symbolic name meaning all available interfaces
 try:
-    serverSocket.bind((HOSTNAME, IP_PORT))
+    serverSocket.bind((HOSTNAME, IP_PORT)) 
 except socket.error as msg:
     print ("Fehler Socket bind")
     sys.exit()
