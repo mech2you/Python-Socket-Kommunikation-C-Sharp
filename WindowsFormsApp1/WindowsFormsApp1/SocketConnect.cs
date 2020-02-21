@@ -8,6 +8,7 @@ namespace SocketCommunicationToPython
 {
     class SocketConnect
     {
+        #region Variablen und Objekte der Klasse
         /// <summary>
         /// Socketverbinung zum Zielhost
         /// </summary>
@@ -31,8 +32,8 @@ namespace SocketCommunicationToPython
         /// <summary>
         /// Wird verwenden um Daten zu senden und diese zu empfangen
         /// </summary>
-        private BackgroundWorker DatenWorker; 
-
+        private BackgroundWorker DatenWorker;
+        #endregion
         #region SocketConnect Konstrukter
         /// <summary>
         /// Im Konstruktor wird der BackgroundWorker initialisiert. Dabei kann optional eine Textbox übergeben werden die im Fehlerfall die Nachrichten oder Statusmeldungen erhält.  
@@ -72,15 +73,25 @@ namespace SocketCommunicationToPython
                 {
                     SetTextToTextBox("Fehler beim Senden der Nachricht -> " + kommando);
                 }
-                if (send)
+                try
                 {
-                    SetTextToTextBox(" Nachricht -> " + Receive());
-                    e.Result = true;
+                    if (send)
+                    {
+                        SetTextToTextBox(" Nachricht -> " + Receive());
+                        e.Result = true;
+                    }
+                    else
+                    {
+                        SetTextToTextBox(" Fehler in der Kommunikation");
+                        e.Result = false;
+                    }
                 }
-                else
+                catch
                 {
+                    SetTextToTextBox(" Fehler in der Kommunikation");
                     e.Result = false;
                 }
+                
             }
         }
         #endregion

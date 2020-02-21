@@ -39,5 +39,28 @@ namespace SocketCommunicationToPython
             SocketPython.Send(SendText.Text);
 
         }
+
+        private void Temperatur_Click(object sender, EventArgs e)
+        {
+            SocketPython.Send("Temp");
+        }
+
+        private void Druck_Click(object sender, EventArgs e)
+        {
+            SocketPython.Send("Druck");
+        }
+
+        private void Servo_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+            {
+                SocketPython.Send("Servo1");
+            }
+            else
+            {
+                SocketPython.Send("Servo0");
+            }
+        }
     }
 }

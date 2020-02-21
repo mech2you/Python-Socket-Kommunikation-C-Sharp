@@ -38,6 +38,9 @@
             this.Port = new System.Windows.Forms.NumericUpDown();
             this.IpLable = new System.Windows.Forms.Label();
             this.PortLable = new System.Windows.Forms.Label();
+            this.Temperatur = new System.Windows.Forms.Button();
+            this.Servo = new System.Windows.Forms.CheckBox();
+            this.Druck = new System.Windows.Forms.Button();
             this.StatusGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Port)).BeginInit();
             this.SuspendLayout();
@@ -154,11 +157,47 @@
             this.PortLable.TabIndex = 9;
             this.PortLable.Text = "Port";
             // 
+            // Temperatur
+            // 
+            this.Temperatur.Location = new System.Drawing.Point(381, 60);
+            this.Temperatur.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Temperatur.Name = "Temperatur";
+            this.Temperatur.Size = new System.Drawing.Size(118, 35);
+            this.Temperatur.TabIndex = 10;
+            this.Temperatur.Text = "Temperatur";
+            this.Temperatur.UseVisualStyleBackColor = true;
+            this.Temperatur.Click += new System.EventHandler(this.Temperatur_Click);
+            // 
+            // Servo
+            // 
+            this.Servo.AutoSize = true;
+            this.Servo.Location = new System.Drawing.Point(642, 66);
+            this.Servo.Name = "Servo";
+            this.Servo.Size = new System.Drawing.Size(105, 24);
+            this.Servo.TabIndex = 11;
+            this.Servo.Text = "Servo Auf";
+            this.Servo.UseVisualStyleBackColor = true;
+            this.Servo.CheckedChanged += new System.EventHandler(this.Servo_CheckedChanged);
+            // 
+            // Druck
+            // 
+            this.Druck.Location = new System.Drawing.Point(513, 60);
+            this.Druck.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Druck.Name = "Druck";
+            this.Druck.Size = new System.Drawing.Size(118, 35);
+            this.Druck.TabIndex = 12;
+            this.Druck.Text = "Druck";
+            this.Druck.UseVisualStyleBackColor = true;
+            this.Druck.Click += new System.EventHandler(this.Druck_Click);
+            // 
             // SocketPythonKommunikation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 385);
+            this.Controls.Add(this.Druck);
+            this.Controls.Add(this.Servo);
+            this.Controls.Add(this.Temperatur);
             this.Controls.Add(this.PortLable);
             this.Controls.Add(this.IpLable);
             this.Controls.Add(this.Port);
@@ -191,6 +230,9 @@
         private System.Windows.Forms.Label IpLable;
         private System.Windows.Forms.Label PortLable;
         private System.Windows.Forms.TextBox Status;
+        private System.Windows.Forms.Button Temperatur;
+        private System.Windows.Forms.CheckBox Servo;
+        private System.Windows.Forms.Button Druck;
     }
 }
 
