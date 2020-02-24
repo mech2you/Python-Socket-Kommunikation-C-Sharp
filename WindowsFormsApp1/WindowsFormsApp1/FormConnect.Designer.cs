@@ -47,10 +47,9 @@
             // 
             // Connect
             // 
-            this.Connect.Location = new System.Drawing.Point(10, 115);
-            this.Connect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Connect.Location = new System.Drawing.Point(7, 75);
             this.Connect.Name = "Connect";
-            this.Connect.Size = new System.Drawing.Size(112, 35);
+            this.Connect.Size = new System.Drawing.Size(75, 23);
             this.Connect.TabIndex = 0;
             this.Connect.Text = "Connect";
             this.Connect.UseVisualStyleBackColor = true;
@@ -58,10 +57,9 @@
             // 
             // Disconnect
             // 
-            this.Disconnect.Location = new System.Drawing.Point(134, 115);
-            this.Disconnect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Disconnect.Location = new System.Drawing.Point(89, 75);
             this.Disconnect.Name = "Disconnect";
-            this.Disconnect.Size = new System.Drawing.Size(112, 35);
+            this.Disconnect.Size = new System.Drawing.Size(75, 23);
             this.Disconnect.TabIndex = 1;
             this.Disconnect.Text = "Disconnect";
             this.Disconnect.UseVisualStyleBackColor = true;
@@ -69,10 +67,9 @@
             // 
             // Send
             // 
-            this.Send.Location = new System.Drawing.Point(254, 115);
-            this.Send.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Send.Location = new System.Drawing.Point(169, 75);
             this.Send.Name = "Send";
-            this.Send.Size = new System.Drawing.Size(112, 35);
+            this.Send.Size = new System.Drawing.Size(75, 23);
             this.Send.TabIndex = 2;
             this.Send.Text = "Send Text";
             this.Send.UseVisualStyleBackColor = true;
@@ -80,45 +77,42 @@
             // 
             // SendText
             // 
-            this.SendText.Location = new System.Drawing.Point(375, 118);
-            this.SendText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SendText.Location = new System.Drawing.Point(250, 77);
             this.SendText.Name = "SendText";
-            this.SendText.Size = new System.Drawing.Size(373, 26);
+            this.SendText.Size = new System.Drawing.Size(250, 20);
             this.SendText.TabIndex = 3;
+            this.SendText.Text = "ServoOff";
             // 
             // StatusGroup
             // 
             this.StatusGroup.Controls.Add(this.Status);
-            this.StatusGroup.Location = new System.Drawing.Point(10, 160);
-            this.StatusGroup.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.StatusGroup.Location = new System.Drawing.Point(7, 104);
             this.StatusGroup.Name = "StatusGroup";
-            this.StatusGroup.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.StatusGroup.Size = new System.Drawing.Size(750, 214);
+            this.StatusGroup.Size = new System.Drawing.Size(500, 139);
             this.StatusGroup.TabIndex = 5;
             this.StatusGroup.TabStop = false;
             this.StatusGroup.Text = "Status";
             // 
             // Status
             // 
-            this.Status.Location = new System.Drawing.Point(9, 46);
-            this.Status.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Status.Location = new System.Drawing.Point(6, 30);
             this.Status.Multiline = true;
             this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(728, 149);
+            this.Status.Size = new System.Drawing.Size(487, 98);
             this.Status.TabIndex = 5;
             // 
             // Ip
             // 
-            this.Ip.Location = new System.Drawing.Point(10, 60);
-            this.Ip.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Ip.Location = new System.Drawing.Point(7, 39);
             this.Ip.Name = "Ip";
-            this.Ip.Size = new System.Drawing.Size(234, 26);
+            this.Ip.Size = new System.Drawing.Size(157, 20);
             this.Ip.TabIndex = 6;
             this.Ip.Text = "141.18.38.55";
             // 
             // Port
             // 
-            this.Port.Location = new System.Drawing.Point(254, 60);
+            this.Port.Location = new System.Drawing.Point(169, 39);
+            this.Port.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Port.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -130,7 +124,7 @@
             0,
             0});
             this.Port.Name = "Port";
-            this.Port.Size = new System.Drawing.Size(120, 26);
+            this.Port.Size = new System.Drawing.Size(80, 20);
             this.Port.TabIndex = 7;
             this.Port.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Port.Value = new decimal(new int[] {
@@ -142,27 +136,28 @@
             // IpLable
             // 
             this.IpLable.AutoSize = true;
-            this.IpLable.Location = new System.Drawing.Point(10, 32);
+            this.IpLable.Location = new System.Drawing.Point(7, 21);
+            this.IpLable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.IpLable.Name = "IpLable";
-            this.IpLable.Size = new System.Drawing.Size(24, 20);
+            this.IpLable.Size = new System.Drawing.Size(17, 13);
             this.IpLable.TabIndex = 8;
             this.IpLable.Text = "IP";
             // 
             // PortLable
             // 
             this.PortLable.AutoSize = true;
-            this.PortLable.Location = new System.Drawing.Point(254, 32);
+            this.PortLable.Location = new System.Drawing.Point(169, 21);
+            this.PortLable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PortLable.Name = "PortLable";
-            this.PortLable.Size = new System.Drawing.Size(38, 20);
+            this.PortLable.Size = new System.Drawing.Size(26, 13);
             this.PortLable.TabIndex = 9;
             this.PortLable.Text = "Port";
             // 
             // Temperatur
             // 
-            this.Temperatur.Location = new System.Drawing.Point(381, 60);
-            this.Temperatur.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Temperatur.Location = new System.Drawing.Point(254, 39);
             this.Temperatur.Name = "Temperatur";
-            this.Temperatur.Size = new System.Drawing.Size(118, 35);
+            this.Temperatur.Size = new System.Drawing.Size(79, 23);
             this.Temperatur.TabIndex = 10;
             this.Temperatur.Text = "Temperatur";
             this.Temperatur.UseVisualStyleBackColor = true;
@@ -171,9 +166,10 @@
             // Servo
             // 
             this.Servo.AutoSize = true;
-            this.Servo.Location = new System.Drawing.Point(642, 66);
+            this.Servo.Location = new System.Drawing.Point(428, 43);
+            this.Servo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Servo.Name = "Servo";
-            this.Servo.Size = new System.Drawing.Size(105, 24);
+            this.Servo.Size = new System.Drawing.Size(73, 17);
             this.Servo.TabIndex = 11;
             this.Servo.Text = "Servo Auf";
             this.Servo.UseVisualStyleBackColor = true;
@@ -181,10 +177,9 @@
             // 
             // Druck
             // 
-            this.Druck.Location = new System.Drawing.Point(513, 60);
-            this.Druck.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Druck.Location = new System.Drawing.Point(342, 39);
             this.Druck.Name = "Druck";
-            this.Druck.Size = new System.Drawing.Size(118, 35);
+            this.Druck.Size = new System.Drawing.Size(79, 23);
             this.Druck.TabIndex = 12;
             this.Druck.Text = "Druck";
             this.Druck.UseVisualStyleBackColor = true;
@@ -192,9 +187,9 @@
             // 
             // SocketPythonKommunikation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 385);
+            this.ClientSize = new System.Drawing.Size(522, 250);
             this.Controls.Add(this.Druck);
             this.Controls.Add(this.Servo);
             this.Controls.Add(this.Temperatur);
@@ -207,7 +202,6 @@
             this.Controls.Add(this.Send);
             this.Controls.Add(this.Disconnect);
             this.Controls.Add(this.Connect);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "SocketPythonKommunikation";
             this.Text = "Socket Communication to Python";
             this.StatusGroup.ResumeLayout(false);
