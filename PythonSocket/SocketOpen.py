@@ -46,19 +46,19 @@ class SocketHandler(Thread):
         #print ("Kommando: "+ cmd)
         if cmd=="Druck":
             tmp=str(sensor.read_pressure())
-            self.conn.sendall(bytes(tmp+ "\n", "utf-8"))
+            self.conn.sendall(bytes(tmp, "utf-8"))
         if cmd=="Temp":
             tmp=str(sensor.read_temperature())
-            self.conn.sendall(bytes(tmp+ "\n", "utf-8"))
+            self.conn.sendall(bytes(tmp, "utf-8"))
         if cmd=="Servo0":
             pwm.set_pwm(servoKanal, 0, servo_min)
-            self.conn.sendall(bytes("Servo zu\n", "utf-8"))
+            self.conn.sendall(bytes("Servo zu", "utf-8"))
         if cmd=="Servo1":
             pwm.set_pwm(servoKanal, 0, servo_max)
-            self.conn.sendall(bytes("Servo auf\n", "utf-8"))
+            self.conn.sendall(bytes("Servo auf", "utf-8"))
         if cmd=="ServoOff":
             pwm.set_pwm(servoKanal, servo_max, servo_max)
-            self.conn.sendall(bytes("Servo aus\n", "utf-8"))
+            self.conn.sendall(bytes("Servo aus", "utf-8"))
 # ----------------- End of SocketHandler -----------------------
 
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
