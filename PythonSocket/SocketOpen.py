@@ -12,15 +12,7 @@ import Adafruit_PCA9685
 pwm = Adafruit_PCA9685.PCA9685()
 servo_min = 150  # Min pulse length out of 4096
 servo_max = 600  # Max pulse length out of 4096
-def set_servo_pulse(channel, pulse):
-    pulse_length = 1000000    # 1,000,000 us per second
-    pulse_length //= 60       # 60 Hz
-    print('{0}us per period'.format(pulse_length))
-    pulse_length //= 4096     # 12 bits of resolution
-    print('{0}us per bit'.format(pulse_length))
-    pulse *= 1000
-    pulse //= pulse_length
-    pwm.set_pwm(channel, 0, pulse)
+servoKanal=1
 
 pwm.set_pwm_freq(60)
 
@@ -55,16 +47,18 @@ class SocketHandler(Thread):
         if cmd=="Druck":
             tmp=str(sensor.read_pressure())
             self.conn.sendall(bytes(tmp+ "\n", "utf-8"))
-        
         if cmd=="Temp":
             tmp=str(sensor.read_temperature())
             self.conn.sendall(bytes(tmp+ "\n", "utf-8"))
         if cmd=="Servo0":
-            pwm.set_pwm(0, 0, servo_min)
+            pwm.set_pwm(servoKanal, 0, servo_min)
             self.conn.sendall(bytes("Servo zu\n", "utf-8"))
         if cmd=="Servo1":
-            pwm.set_pwm(0, 0, servo_max)
+            pwm.set_pwm(servoKanal, 0, servo_max)
             self.conn.sendall(bytes("Servo auf\n", "utf-8"))
+        if cmd=="ServoOff":
+            pwm.set_pwm(servoKanal, servo_max, servo_max)
+            self.conn.sendall(bytes("Servo aus\n", "utf-8"))
 # ----------------- End of SocketHandler -----------------------
 
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
