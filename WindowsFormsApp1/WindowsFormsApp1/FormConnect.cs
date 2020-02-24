@@ -55,11 +55,11 @@ namespace SocketCommunicationToPython
             CheckBox box = (CheckBox)sender;
             if (box.Checked)
             {
-                SocketPython.Send("Servo1");
+                SocketPython.Send("Servo0");
             }
             else
             {
-                SocketPython.Send("Servo0");
+                SocketPython.Send("Servo1");
             }
         }
     }
