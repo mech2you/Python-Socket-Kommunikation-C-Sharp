@@ -77,7 +77,8 @@ namespace SocketCommunicationToPython
                 {
                     if (send)
                     {
-                        SetTextToTextBox(" Nachricht -> " + Receive());
+                        string tmp = Receive();
+                        SetTextToTextBox("Nachricht empfangen -> " + tmp);
                         e.Result = true;
                     }
                     else
@@ -188,7 +189,8 @@ namespace SocketCommunicationToPython
             {
                 return (Convert.ToString(e.ErrorCode)+" "+ Convert.ToString(e.Message));
             }
-            return Encoding.UTF8.GetString(bytes);
+            string tmp = Encoding.UTF8.GetString(bytes);
+            return tmp.Trim('\0');
         }
         #endregion
         #region Extrafunktionen 
