@@ -52,10 +52,10 @@ class SocketHandler(Thread):
             self.conn.sendall(bytes(tmp, "utf-8"))
         if cmd=="Servo0":
             pwm.set_pwm(servoKanal, 0, servo_min)
-            self.conn.sendall(bytes("Servo zu", "utf-8"))
+            self.conn.sendall(bytes("Servo auf", "utf-8"))
         if cmd=="Servo1":
             pwm.set_pwm(servoKanal, 0, servo_max)
-            self.conn.sendall(bytes("Servo auf", "utf-8"))
+            self.conn.sendall(bytes("Servo zu", "utf-8"))
         if cmd=="ServoOff":
             pwm.set_pwm(servoKanal, servo_max, servo_max)
             self.conn.sendall(bytes("Servo aus", "utf-8"))
