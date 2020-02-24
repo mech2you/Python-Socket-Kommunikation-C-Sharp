@@ -207,7 +207,7 @@ namespace SocketCommunicationToPython
                 {
                     tBox.Invoke(new Action(() =>
                     {
-                        tBox.AppendText(_text);
+                        tBox.AppendText(_text + Environment.NewLine);
 
                     }));
                 }
@@ -232,7 +232,7 @@ namespace SocketCommunicationToPython
                 {
                     Statusbox.Invoke(new Action(() =>
                     {
-                        Statusbox.AppendText(_text);
+                        Statusbox.AppendText(_text + Environment.NewLine);
 
                     }));
                 }
